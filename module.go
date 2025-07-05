@@ -171,18 +171,18 @@ func (mod Module) GoSourceTag() template.HTML {
 	return renderMeta("go-source", content)
 }
 
-var metaTemplate = template.Must(template.New("").Parse(`<meta name="{{.Name}}" value="{{.Value}}">`))
+var metaTemplate = template.Must(template.New("").Parse(`<meta name="{{.Name}}" content="{{.Content}}">`))
 
 type metaTemplateContext struct {
-	Name  string
-	Value string
+	Name    string
+	Content string
 }
 
-// renderMeta renders a meta tag with the given name and value.
-func renderMeta(name string, value string) template.HTML {
+// renderMeta renders a meta tag with the given name and content.
+func renderMeta(name string, content string) template.HTML {
 	var builder strings.Builder
 
-	if err := metaTemplate.Execute(&builder, metaTemplateContext{Name: name, Value: value}); err != nil {
+	if err := metaTemplate.Execute(&builder, metaTemplateContext{Name: name, Content: content}); err != nil {
 		panic(fmt.Sprintf("metaTemplate failed: %v", err))
 	}
 
