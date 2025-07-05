@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{{ .URL }}</title>
+    <style>
+      a, a:visited {
+        color: blue;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        text-align: justify;
+        box-sizing: border-box;
+      }
+      body div {
+        margin: 0 auto;
+        max-width: 600px;
+      }
+      footer {
+        border-top: 1px solid currentcolor;
+        font-size: smaller;
+        margin-top: 2em;
+        padding-top: 0.5em;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          color-scheme: dark;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <main>
+        <h1>{{ .URL }}</h1>
+        <p>
+          {{.Content}}
+        </p>
+        <ul>{{ range $mod, $link := .Modules }}
+          <li>
+            <a href="/{{ $link }}">
+              <code>{{ $mod }}</code>
+            </a>
+          </li>{{ end }}
+        </ul>
+      </main>{{ if .Footer }}
+      <footer>
+        {{ .Footer }}
+      </footer>{{ end }}
+    </div>
+  </body>
+</html>

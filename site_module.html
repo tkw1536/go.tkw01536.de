@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{ .GoImportTag }}
+    {{ .GoSourceTag }}
+    <title>{{ .ImportPath }}</title>
+    <style>
+      a, a:visited  {
+        color: blue;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        text-align: justify;
+        box-sizing: border-box;
+      }
+      body div {
+        margin: 0 auto;
+        max-width: 600px;
+      }
+      footer {
+        border-top: 1px solid currentcolor;
+        font-size: smaller;
+        margin-top: 2em;
+        padding-top: 0.5em;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          color-scheme: dark;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <main>
+            <h1>{{ .ImportPath }}</h1>
+            <p>
+                This URL is used as the go module <code>{{ .ImportPath }}</code>.
+                You can <code>go get {{.ImportPath}}</code> and then in your code:
+            </p>
+            <p>
+                <code>import "{{.ImportPath}}"</code>
+            </p>
+            <p>{{ $source := .SourceCodeURL}}{{ if $source }}
+                Visit the <a href="{{ .HomePageURL }}">module home page</a> or <a href="{{ .SourceCodeURL }}">the source code</a>.{{ else }}
+                Visit the <a href="{{ .HomePageURL }}">module home page</a>.{{ end }}
+            </p>
+      </main>{{ if .Footer }}
+      <footer>
+        {{ .Footer }}
+      </footer>{{ end }}
+    </div>
+  </body>
+</html>
