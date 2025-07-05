@@ -88,13 +88,13 @@ func BuildSite(url string, indexContent template.HTML, footerContent template.HT
 
 func getModuleHTMLPath(mod Module, base string) (path string, ok bool) {
 	realBase := strings.TrimSuffix(base, "/")
-	realBase = strings.TrimPrefix(realBase, "/")
 	if !strings.HasPrefix(mod.ImportPath, realBase) {
 		return "", false
 	}
 
 	path = strings.TrimSuffix(mod.ImportPath[len(realBase):], "/")
 	path = filepath.Join(path, "index.html")
+	path = strings.TrimPrefix(path, "/")
 	return path, true
 }
 
