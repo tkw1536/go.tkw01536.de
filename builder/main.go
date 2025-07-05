@@ -10,6 +10,8 @@ import (
 )
 
 var modules = []modsite.Module{
+	modsite.GitForgeModule("go.tkw01536.de/ggman", "https://github.com/tkw1536/ggman", "main"),
+	modsite.GitForgeModule("go.tkw01536.de/goprogram", "https://github.com/tkw1536/goprogram", "main"),
 	modsite.GitForgeModule("go.tkw01536.de/modsite", "https://github.com/tkw1536/go.tkw01536.de", "main"),
 	modsite.GitForgeModule("go.tkw01536.de/pkglib", "https://github.com/tkw1536/pkglib", "main"),
 }
