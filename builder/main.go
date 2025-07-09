@@ -10,6 +10,7 @@ import (
 )
 
 var modules = []modsite.Module{
+	modsite.GitForgeModule("go.tkw01536.de/akhttpd", "https://github.com/tkw1536/akhttpd", "main"),
 	modsite.GitForgeModule("go.tkw01536.de/ggman", "https://github.com/tkw1536/ggman", "main"),
 	modsite.GitForgeModule("go.tkw01536.de/go-check-spellchecker", "https://github.com/tkw1536/go-check-spellchecker", "main"),
 	modsite.GitForgeModule("go.tkw01536.de/gogenlicense", "https://github.com/tkw1536/gogenlicense", "main"),
